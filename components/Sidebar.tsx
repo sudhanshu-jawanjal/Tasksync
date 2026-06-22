@@ -1,19 +1,19 @@
 export default function Sidebar(){
     return(
         <div>
-            <div className="bg-gray-800 p-6 rounded-2xl h-[13vw] w-[15vw]">
+            <div className="bg-[#FFFFE3] p-6 rounded-2xl h-[13vw] w-[15vw]">
                 <ul className="flex flex-col gap-4 pl-4 pr-4">
                     <li>
-                        <a href="/" className="text-white hover:text-gray-300">Dashboards</a>
+                        <a href="/" className="text-black hover:text-gray-600">Dashboards</a>
                     </li>
                     <li>
-                        <a href="/" className="text-white hover:text-gray-300">Boards</a>
+                        <a href="/" className="text-black hover:text-gray-600">Boards</a>
                     </li>
                     <li>
-                        <a href="/" className="text-white hover:text-gray-300">Tasks</a>
+                        <a href="/" className="text-black hover:text-gray-600">Tasks</a>
                     </li>
                     <li>
-                        <a href="/" className="text-white hover:text-gray-300">Settings</a>
+                        <a href="/" className="text-black hover:text-gray-600">Settings</a>
                     </li>
                 </ul>
             </div>
