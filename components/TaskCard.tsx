@@ -5,35 +5,63 @@ type TaskCardProps = {
   onDelete: () => void;
 };
 
-export default function TaskCard({ title, priority, dueDate, onDelete }: TaskCardProps) {
-    let priorityClass = "";
-    let buttonClass = "";
+export default function TaskCard({
+  title,
+  priority,
+  dueDate,
+  onDelete,
+}: TaskCardProps) {
+  let priorityBgClass = "";
+  let priorityTextClass = "";
+  let priorityLabel = "";
 
-    if (priority === "High") {
-    priorityClass = "bg-[#FFA896]";
-    buttonClass = "bg-[#6D8196] hover:bg-[#5a6d7d]";
-    } else if (priority === "Medium") {
-    priorityClass = "bg-[#D4DE95]";
-    buttonClass = "bg-[#6D8196] hover:bg-[#5a6d7d]";
-    } else {
-    priorityClass = "bg-[#CFFFDC]";
-    buttonClass = "bg-[#6D8196] hover:bg-[#5a6d7d]";
-    }
+  if (priority === "High") {
+    priorityBgClass = "bg-red-500/20";
+    priorityTextClass = "text-red-400";
+    priorityLabel = "🔴 High";
+  } else if (priority === "Medium") {
+    priorityBgClass = "bg-orange-500/20";
+    priorityTextClass = "text-orange-400";
+    priorityLabel = "🟠 Medium";
+  } else {
+    priorityBgClass = "bg-green-500/20";
+    priorityTextClass = "text-green-400";
+    priorityLabel = "🟢 Low";
+  }
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    });
+  };
+
   return (
-    
-    <div className={` flex gap-12 px-6 py-4 rounded-2xl  text-black font-medium ${priorityClass}`}>
-
-      <h1>{title}</h1>
-      <p>Priority: {priority}</p>
-      <p>Due Date: {dueDate}</p>
-      <button
-        className={` ${buttonClass} text-white px-4 py-2 rounded-lg `}
-        onClick={onDelete}
+    <div className="bg-secondary border border-border rounded-lg p-4 hover:border-primary transition-all group">
+      <div className="flex items-start justify-between gap-2 mb-3">
+        <h3 className="font-medium text-foreground text-sm leading-snug flex-1 group-hover:text-primary transition-colors">
+          {title}
+        </h3>
+        <button
+          onClick={onDelete}
+          className="opacity-0 group-hover:opacity-100 flex-shrink-0 text-destructive hover:bg-destructive/20 p-1 rounded transition-all"
+          title="Delete task"
         >
-
-        Delete
-
+          ✕
         </button>
+      </div>
+
+      <div className="flex items-center justify-between gap-2">
+        <div
+          className={`text-xs font-semibold px-2.5 py-1 rounded ${priorityBgClass} ${priorityTextClass}`}
+        >
+          {priorityLabel}
+        </div>
+        <span className="text-xs text-muted-foreground">
+          {formatDate(dueDate)}
+        </span>
+      </div>
     </div>
   );
 }

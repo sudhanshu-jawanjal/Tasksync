@@ -1,16 +1,41 @@
 export default function Navbar() {
-    return (
-    <nav className="bg-[#FFFFE3] text-black  py-4 px-8 w-fit rounded-2xl">
-            <ul className="flex space-x-48 ">
-                <li>
-                    <a href="/" className="text-black hover:text-gray-600">TASKSYNC</a>
-                </li>
-                <li>
-                    <a href="/dashboard" className="text-black hover:text-gray-600">Dashboard</a>
-                </li>
-                <li>
-                    <a href="/profile" className="text-black hover:text-gray-600">Profile</a>
-                </li>
-            </ul>
-        </nav>
-    );}
+  return (
+    <nav className="bg-card border-b border-border px-8 py-4">
+      <div className="max-w-full mx-auto">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-12">
+            <h1 className="text-2xl font-bold text-primary">TASKSYNC</h1>
+            <div className="hidden md:flex gap-8">
+              <a
+                href="/"
+                className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+              >
+                Dashboard
+              </a>
+              <a
+                href="/profile"
+                className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+              >
+                Profile
+              </a>
+              <a
+                href="/settings"
+                className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+              >
+                Settings
+              </a>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="px-4 py-2 text-foreground hover:bg-secondary rounded-lg transition-colors text-sm font-medium">
+              Help
+            </button>
+            <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-all text-sm font-medium">
+              Sign In
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
